@@ -1,0 +1,39 @@
+.card {
+  max-width: 1240px;
+  margin: 2rem auto 2rem auto;
+  color: #fff;
+  display: flex;
+  gap: 1.65rem;
+
+  .cardImage {
+    border-radius: 6px;
+    width: 15rem;
+    height: 10rem;
+    object-fit: cover;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .provider {
+    display: block;
+    margin: 0.75rem 0;
+    color: #8695a4;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 426px) {
+  .card {
+    flex-direction: column;
+    text-align: center;
+    .cardImage {
+      width: 100%;
+    }
+  }
+}
