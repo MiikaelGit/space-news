@@ -19,7 +19,7 @@ export const Content: React.FC = () => {
   useEffect(() => {
     async function loadNews() {
       const response = await axios.get(
-        "https://api.spaceflightnewsapi.net/v4/articles"
+        "https://api.spaceflightnewsapi.net/v4/articles/?format=json"
       );
 
       const newsData = response.data;
