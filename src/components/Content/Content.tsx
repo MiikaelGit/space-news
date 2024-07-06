@@ -5,12 +5,27 @@ import styles from "../Content/Content.module.scss";
 import { Triangle } from "react-loader-spinner";
 
 interface PostType {
-  id: number;
-  imageUrl: string;
-  title: string;
-  newsSite: string;
-  summary: string;
-  url: string;
+  id: number,
+  title: string,
+  url: string,
+  image_url: string,
+  news_site: string,
+  summary: string,
+  published_at: string,
+  updated_at: string,
+  featured: boolean,
+  launches: [
+    {
+      launch_id: string,
+      provider: string
+    }
+  ],
+  events: [
+    {
+      event_id: number,
+      provider: string
+    }
+  ]
 }
 
 export const Content: React.FC = () => {
@@ -19,10 +34,10 @@ export const Content: React.FC = () => {
   useEffect(() => {
     async function loadNews() {
       const response = await axios.get(
-        "https://api.spaceflightnewsapi.net/v3/articles"
+        "https://api.spaceflightnewsapi.net/v4/articles/",
       );
 
-      const newsData = response.data;
+      const newsData = response.data.results;
       setNews(newsData);
     }
     loadNews();
@@ -53,9 +68,9 @@ export const Content: React.FC = () => {
           return (
             <Card
               key={article.id}
-              imgPath={article.imageUrl}
+              imgPath={article.image_url}
               title={article.title}
-              provider={article.newsSite}
+              provider={article.news_site}
               description={article.summary}
               newsLink={article.url}
             />
