@@ -41,7 +41,17 @@ export const Content: React.FC = () => {
       setNews(newsData);
     }
     loadNews();
+    requestPermission();
   }, []);
+
+  function requestPermission() {
+    if (!('Notification' in window)) {
+        alert('Notification API not supported!');
+        return;
+    }
+    
+    Notification.requestPermission();
+    }
   return (
     <main className={styles.main}>
       {news.length === 0 ? (
